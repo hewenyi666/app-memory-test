@@ -20,7 +20,7 @@ filename='../data/start-painting.txt'
 filename1='../data/stop-painting.txt'
 while True:
     if os.path.exists(filename) == True:
-        memory.append(get_men('com.hanvon.xpen', '04110258C5000088')/1000.0)
+        memory.append(get_men('包名', '序列号')/1000.0)#包名换为要测试app的报名,序列号通过adb devices获得
         time.sleep(0.1)
     if os.path.exists(filename1) == True:
         break
@@ -35,7 +35,6 @@ y=''
 #将列的值存入字符串
 y=table.col_values(0)#读取列的值
 t=np.linspace(1,1000,len(y))#等间隔取值
-bar=Bar("内存统计展示","单位是M")#主副标题
+bar=Bar("app内存统计","单位是M")#主副标题
 bar.add("折线图展示",t,y,is_more_utils=True)#标题
-#bar.show_config()#展示HTML源代码
 bar.render("../memory result/memory chart.html")
